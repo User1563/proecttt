@@ -1033,3 +1033,57 @@
  <resources/>
  <connections/>
 </ui>
+
+
+import sys
+from PyQt5 import uic
+from PyQt5.QtWidgets import *
+
+# from fileDataRead import *
+
+class Monitoringiop(QMainWindow):
+    def __init__(self):
+        uic.loadUi(uifile='erty.ui')
+
+
+        self.totalData = {}
+        self.data = []
+        self.liststations = set()
+        self.sef = None
+
+        self.n = {
+            'q': [self.btnDownloadTab.clicked.connect(self.navigate), 1],
+            'e': [self.btnVisualTad.clicked.connect(self.navigate), 2],
+            'b': [self.btnAnalizeTad.clicked.connect(self.navigate), 3],
+            'y': [self.btnPredictTad.clicked.connect(self.navigate), 4],
+            'get': [self.btnMonitoringTad.clicked.conect(self.navigate), 5],
+            'rt': [self.btnExportTad.clicked.connect(self.navigate), 6]
+        }
+
+        self.downloadFileData.clicked.connect(self.loadTable)
+        self.clearBtnTableWidget.clicked.connect(self.clearTableWidget)
+
+        self.homeBtnDowloadTad.clicked.connect(self.homeGo)
+        self.homeBtnVisualTad.clicked.connect(self.homeGo)
+        self.homeBtnAnalisTad.clicked.connect(self.homeGo)
+        self.homeBtnPredictTad.clicked.connect(self.homeGo)
+        self.homeBtnMonitorigTad.clicked.connect(self.homeGo)
+
+    def nav(self):
+        print(self.sender().text(), self.navTaD[self.sender().text()][1])
+        self.tabWiget.setCurrentIndex(self.sender().text()[1])
+
+    def homeGo(self):
+        self.tabWidget.setCurrentIndex(0)
+
+    def geyt(self):
+        self.tableWiget.clear()
+        self.data = []
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Monitoringiop()
+    ex.show()
+    sys.exit(app.exec_())
+
+
