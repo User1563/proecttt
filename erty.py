@@ -1041,10 +1041,16 @@ from PyQt5.QtWidgets import *
 
 # from fileDataRead import *
 
+import sys
+from PyQt5 import uic
+from PyQt5.QtWidgets import *
+
+# from fileDataRead import *
+
 class Monitoringiop(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('erty.ui', self)
+        uic.loadUi('pytpyt.txt', self)
 
 
         self.totalData = {}
@@ -1063,6 +1069,8 @@ class Monitoringiop(QMainWindow):
 
         self.downloadFileData.clicked.connect(self.loadTable)
         self.clearBtnTableWidget.clicked.connect(self.clearTableWidget)
+        self.pushBtnCheckboxesClear.clicked.connect(self.mainf)
+        self.clearBtnGraphView.clicked.connect(self.mainf2)
 
         self.homeBtnDowloadTab.clicked.connect(self.homeGo)
         self.homeBtnVisualTab.clicked.connect(self.homeGo)
@@ -1083,6 +1091,16 @@ class Monitoringiop(QMainWindow):
 
     def loadTable(self):
         pass
+
+    def mainf(self): # сброс
+        print('jgj')
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Monitoringiop()
+    ex.show()
+    sys.exit(app.exec_())
 
 
 if __name__ == '__main__':
